@@ -1,0 +1,30 @@
+@media only screen and (max-width: 992px) {
+    .row{
+        justify-content: center;
+        
+
+    }
+    .row-cols-lg-3 > * {
+        border: none;
+      
+        flex: 0 0 50%; /* Set each column to be 50% of the container width */
+        max-width: 50%; /* Ensure each column does not exceed 50% of the container width */
+    }
+
+    
+}
+
+.card-style{
+    cursor: pointer;
+ }
+
+
+
+@media (max-width: 351px) {
+    .row-cols-lg-3 .col-lg-3 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+

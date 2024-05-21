@@ -1,0 +1,144 @@
+.body-style {
+  margin-bottom: 15%;
+}
+.line {
+  flex: 1;
+  height: 2px;
+  border: 2px dashed #ccc;
+}
+
+.line-2 {
+  flex: 1;
+  height: 1px;
+  border: 1px dashed #ccc;
+}
+
+.hr {
+  margin-top: -10px;
+}
+.order-details {
+  padding: 2%;
+  border-radius: 10px;
+
+  border: 2px solid violet;
+
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+}
+
+.parentDiv {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+}
+
+.parentDiv span,
+.payment-type span,
+.total-amount span {
+  font-weight: bold;
+}
+
+.tex-shipping {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.child span {
+  font-weight: 500;
+}
+.child {
+  margin-top: 4px;
+  flex-wrap: wrap;
+
+  display: flex;
+  align-items: center;
+
+  justify-content: space-between;
+}
+li {
+  list-style: none;
+}
+.ul {
+  padding: 0px;
+}
+
+.image-title .img-style {
+  object-fit: cover;
+  border-radius: 0.5rem;
+  height: 4rem;
+  width: 4rem;
+}
+.image-title {
+  display: flex;
+  width: 50%;
+  /* background-color: aqua; */
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (max-width: 461px) {
+  .image-title {
+    display: flex;
+    width: 97%;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.child .price-qty-status {
+  display: flex;
+  gap: 1.8rem;
+  align-items: center;
+  text-align: center;
+  justify-content: space-evenly;
+}
+
+.price-qty-status .status {
+  gap: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.child .cancel-order {
+  padding: 2px;
+  gap: 1px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: center;
+}
+.child .cancel-order button {
+  padding: 5px;
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+}
+
+.payment-type {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+.total-amount {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0px 4px 4px 0px;
+ 
+}
+.status-review {
+  height: 15px;
+  width: 15px;
+  border-radius: 15px;
+}
+
+.totalOrder{
+  color: white;
+  background-color: black;
+  padding: 0px 5px 0px 5px;
+  border-radius: 10px;
+
+}

@@ -11,3 +11,93 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+
+
+
+
+
+.Toastify__toast--success {
+  margin-top: 5%;
+ 
+  border-radius: 50px !important;
+  
+}
+.Toastify__toast--info {
+   margin-top: 5%;
+ 
+  border-radius: 50px !important;
+  
+}
+
+.Toastify__toast--error {
+  margin-top: 5%;
+
+ border-radius: 50px !important;
+ 
+}
+
+.Toastify__toast--warning{
+  margin-top: 5%;
+
+ border-radius: 50px !important;
+ 
+}
+
+
+@media only screen and (max-width: 482px){ 
+
+
+
+  .Toastify__toast-body {
+    font-size: 16px;
+    padding-left: 20px;
+    line-height: 20px;
+    padding: 0px;
+    padding-top: 25px;
+    width: 50%;
+    font-weight: 400;
+    margin-left: 5px !important;
+  } 
+  
+
+  .Toastify__toast-container--top-center {
+    
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+  }
+
+
+  .Toastify__toast--success {
+    margin-top: 5%;
+   
+    border-radius: 50px !important;
+    
+  }
+  .Toastify__toast--info {
+     margin-top: 5%;
+   
+    border-radius: 50px !important;
+    
+  }
+
+  .Toastify__toast--error {
+    margin-top: 5%;
+  
+   border-radius: 50px !important;
+   
+  }
+
+  .Toastify__toast--warning{
+    margin-top: 5%;
+  
+   border-radius: 50px !important;
+   
+  }
+}
+

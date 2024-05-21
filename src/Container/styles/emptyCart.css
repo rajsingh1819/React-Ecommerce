@@ -1,0 +1,50 @@
+.container-fluid {
+
+  
+    margin-top: 3%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5%;
+    
+}
+
+.emptyCart {
+    margin-bottom: 30px;
+    border: 0;
+    transition: all .3s ease;
+    letter-spacing: .5px;
+    border-radius: 8px;
+    box-shadow: 1px 5px 24px 0 rgba(68, 102, 242, .05);
+}
+
+
+.card-header:first-child {
+    border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+}
+
+.emptyCart .emptyCart-carT-body {
+    padding: 30px;
+    background-color: transparent;
+}
+
+.btn-primary,
+.btn-primary.disabled,
+.btn-primary:disabled {
+    background-color: #4466f2 !important;
+    border-color: #4466f2 !important;
+}
+
+
+@media (max-width:493px) {
+    .container-fluid {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 15%;
+        margin-top: 7%;
+
+
+    }
+
+}

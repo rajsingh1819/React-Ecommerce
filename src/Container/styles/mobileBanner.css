@@ -1,0 +1,36 @@
+.imageStyle {
+    display: flex;
+    flex-wrap: nowrap; 
+    gap: 3px;
+    overflow-x: auto; 
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+}
+
+.imageStyle::-webkit-scrollbar {
+    display: none; 
+}
+
+.innerImage {
+    flex: 0 0 50%; 
+    max-width: 50%; }
+
+.innerImage img {
+    width: 100%; 
+    height: auto; 
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) { 
+    .innerImage {
+        flex: 0 0 50%; 
+        max-width: 50%;
+    }
+}
+
+@media (max-width: 480px) {
+    .innerImage {
+        flex: 0 0 100%; 
+        max-width: 100%; 
+    }
+}

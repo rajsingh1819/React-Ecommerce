@@ -1,0 +1,59 @@
+.form-body-style {
+  border: none;
+  border-radius: 2rem;
+  padding: 2rem 4rem;
+  width: 400px;
+  background-color: rgba(255, 255, 255, 0.555);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.login-container {
+ 
+ 
+  margin-bottom: 10%;
+}
+
+.icon-hide-show {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.icon-hide-show span {
+  padding: 0 4px 0 0;
+  font-size: 2rem;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1%;
+}
+
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
+}
+
+.style-Buttonstyle-p button {
+  width: 100%;
+}
+.style-Buttonstyle-p p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .d-none.d-lg-block {
+    display: none;
+  }
+
+  .login-container {
+    padding: 2%;
+   
+  }
+}
+

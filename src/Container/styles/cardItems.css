@@ -1,0 +1,146 @@
+.card_img img {
+  width: 100%;
+  border-radius: 5px 5px 0 0;
+
+  aspect-ratio: 3/2;
+  object-fit: contain;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.card_img img:hover {
+  transform: scale(1.05);
+  opacity: 0.8;
+}
+
+.card_img span {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
+  color: white;
+  width: max-content;
+  height: max-content;
+  background-color: #e7c251;
+  border-radius: 3px 0 0 0;
+  padding: 0.3rem 0.5rem;
+}
+
+.card {
+  border: none !important;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+}
+
+.card_img {
+  position: relative;
+  background-color: aqua;
+}
+
+.card_top {
+  justify-content: space-between;
+}
+
+.card_top span i {
+  color: #e7c251;
+}
+
+.card_rating_title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card_rating_title h5 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: black;
+
+  display: contents;
+}
+
+.item_ratings {
+  display: flex;
+  font-size: 0.9rem;
+  gap: 4px;
+}
+
+.item_ratings i {
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.mobile_title a {
+  font-size: 1rem;
+  text-decoration: none;
+
+  text-align: center;
+
+  transition: 0.3s;
+}
+
+.mobile_title a:hover {
+  color: #e7c251;
+}
+
+.card_bottom {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  z-index: 17;
+  color: white;
+  width: max-content;
+  height: max-content;
+  background-color: #e7c251;
+  border-radius: 50%;
+}
+
+.card_bottom h5 {
+  margin-top: 5%;
+}
+
+.booking_btn {
+  color: black;
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 562px) {
+  .card_rating_title .item_ratings {
+    gap: 0px;
+  }
+
+  .mobile_title a {
+    font-size: 0.82rem;
+    text-decoration: none;
+
+    text-align: center;
+
+    transition: 0.3s;
+  }
+
+  .card_img span {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 10;
+    color: white;
+    width: max-content;
+    height: max-content;
+    background-color: #e7c251;
+    border-radius: 3px 0 0 0;
+    padding: 0.3rem 0.5rem;
+    font-size: 0.7rem;
+  }
+}
+
+
+.h3Style{
+  max-width: 100%; /* Adjust the maximum width as needed */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  white-space: normal;
+}

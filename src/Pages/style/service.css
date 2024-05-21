@@ -1,0 +1,60 @@
+/* Base styles for the service container */
+.serviceStyle {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3%;
+}
+
+/* Style for each service item */
+.inner-Style {
+    flex: 0 0 50%; 
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box; 
+    gap: 5px;
+}
+
+.inner-Style .inner-text h5 {
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+.inner-Style .inner-text h6 {
+   
+    font-size: 0.8rem;
+}
+
+
+
+
+
+/* Media query for larger screens (web view) */
+@media (min-width: 768px) { 
+    .inner-Style {
+        flex: 0 0 25%; 
+    }
+}
+
+@media (max-width: 768px) {
+   .inner-Style .inner-text h5 {
+        font-weight: bold;
+        font-size: 0.8rem;
+    }
+    .inner-Style .inner-text h6 {
+       
+        font-size: 0.6rem;
+    }
+}
+
+@media (max-width: 450px) { 
+    .inner-Style .inner-text h5 {
+         font-weight: bold;
+         font-size: 0.6rem;
+     }
+     .inner-Style .inner-text h6 {
+        
+         font-size: 0.6rem;
+     }
+ }

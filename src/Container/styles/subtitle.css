@@ -1,0 +1,11 @@
+.section_subtitle {
+    margin-top: 10px;
+
+    background-color: #e7c251;
+    display: inline-block;
+    font-family: cursive;
+    font-size: 1rem;
+    border-radius: 10px;
+    padding: 5px;
+
+}

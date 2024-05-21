@@ -1,0 +1,24 @@
+.nav_style {
+  background-color: #222f3d;
+  padding: 1rem;
+  gap: 10px;
+  height: auto;
+  margin-bottom: 7px;
+  /* margin-top: 5%; */
+  display: flex;
+  flex-wrap: wrap;
+  color: white;
+}
+
+.active {
+  border-right: none;
+  border-bottom: 4px solid #e7c251;
+  background-color: #222f3d;
+  border-bottom-left-radius: 1px;
+  border-bottom-right-radius: 1px;
+}
+
+.nav_style a {
+  text-decoration: none;
+  color: white;
+}
