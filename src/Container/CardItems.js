@@ -58,10 +58,12 @@ function CardItems({ item }) {
                     "Not rated"
                   ) : (
                     <span>
+                      (
                       {
                         totalReview.filter((item) => item.productId === id)
                           .length
                       }
+                      )
                     </span>
                   )}
                 </span>

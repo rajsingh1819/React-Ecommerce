@@ -25,25 +25,25 @@ function DropDownProfile() {
     });
   };
 
-  //   useEffect(() => {
-  //     const handleClickOutside = (e) => {
-  //       if (
-  //         menuRef.current &&
-  //         !menuRef.current.contains(e.target) &&
-  //         iconRef.current &&
-  //         !iconRef.current.contains(e.target)
+    useEffect(() => {
+      const handleClickOutside = (e) => {
+        if (
+          menuRef.current &&
+          !menuRef.current.contains(e.target) &&
+          iconRef.current &&
+          !iconRef.current.contains(e.target)
 
-  //       ) {
-  //         setOpenProfile(false);
-  //       }
-  //     };
+        ) {
+          setOpenProfile(false);
+        }
+      };
 
-  //     window.addEventListener("click", handleClickOutside);
+      window.addEventListener("click", handleClickOutside);
 
-  //     return () => {
-  //       window.removeEventListener("click", handleClickOutside);
-  //     };
-  //   }, []);
+      return () => {
+        window.removeEventListener("click", handleClickOutside);
+      };
+    }, []);
 
   const userNotRegister = () => {
     localStorage.clear("login");
@@ -63,11 +63,11 @@ function DropDownProfile() {
     localStorage.getItem("register"),
   ]);
 
-  window.addEventListener("click", (e) => {
-    if (e.target !== menuRef.current && e.target !== iconRef.current) {
-      setOpenProfile(false);
-    }
-  });
+  // window.addEventListener("click", (e) => {
+  //   if (e.target !== menuRef.current && e.target !== iconRef.current) {
+  //     setOpenProfile(false);
+  //   }
+  // });
 
   useEffect(() => {
     const handleScroll = () => {

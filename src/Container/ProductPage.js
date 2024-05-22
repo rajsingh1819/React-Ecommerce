@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Button, Form, ListGroup } from "react-bootstrap";
 import calculateAvgRating from "../Shared/AvgRating";
-import "./styles/service.css";
+import "./styles/productPage.css";
 import { FaStar, FaUserAlt } from "react-icons/fa";
 import { MdShoppingCart, MdRemoveShoppingCart } from "react-icons/md";
 import { BsThreeDotsVertical } from "react-icons/bs";
@@ -12,7 +12,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { v4 as uuidv4 } from "uuid";
 
-function Service(props) {
+function ProductPage(props) {
   const { addToCart, cart, removeToCart } = useCartContext();
   const navigate = useNavigate();
   const data = props.data[0];
@@ -376,4 +376,4 @@ function Service(props) {
   );
 }
 
-export default Service;
+export default ProductPage;

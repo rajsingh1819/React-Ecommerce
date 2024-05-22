@@ -1,5 +1,5 @@
-import React from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import Home from "../Components/Home";
 import Mobile from "../Pages/Mobile";
 import Fashion from "../Pages/Fashion";
@@ -16,6 +16,12 @@ import Profile from "../Pages/Profile";
 import About from "../Pages/About";
 
 function Router() {
+  const { pathname } = useLocation();
+  //This component will scroll the window to the top whenever the route changes.
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   return (
     <Routes>
       <Route path="/" element={<Navigate to="/home" />} />

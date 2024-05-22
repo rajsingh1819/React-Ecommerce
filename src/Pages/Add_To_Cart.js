@@ -77,58 +77,61 @@ function AddToCart() {
       <Row>
         <Col lg="8">
           <div className="cartData">
-            {cart?.length > 0 &&
-              cart.map((item) => (
-                <ul className="under-list" key={item.id}>
-                  <li className="list-items">
-                    <div className="listData">
-                      <div className="image">
-                        <img
-                          src={item.Image}
-                          className="image-type"
-                          alt="imageName"
-                          onClick={() =>
-                            navigate(`/product/${item.category}/${item.id}`)
-                          }
-                        />
+            {cart?.length > 0 && (
+              <ul className="under-list">
+                {cart.map((item, index) => (
+                  <li key={item.id}>
+                    {index > 0 && <div className="line-2 mt-2"></div>}
+                    <div className="list-items">
+                      <div className="listData">
+                        <div className="image">
+                          <img
+                            src={item.Image}
+                            className="image-type"
+                            alt="imageName"
+                            onClick={() =>
+                              navigate(`/product/${item.category}/${item.id}`)
+                            }
+                          />
 
-                        <div className="details-items">
-                          <p className="items-desc">{item.title}</p>
-                          <p className="items-desc-1">Golden</p>
+                          <div className="details-items">
+                            <p className="items-desc">{item.title}</p>
+                            <p className="items-desc-1">Golden</p>
+                          </div>
                         </div>
                       </div>
-                    </div>
 
-                    <div className="section-div">
-                      <p>Qty: </p>
-                      <select
-                        className="section"
-                        value={item.quantity}
-                        onChange={(e) => handleQuantityChange(item.id, e)}
+                      <div className="section-div">
+                        <p>Qty: </p>
+                        <select
+                          className="section"
+                          value={item.quantity}
+                          onChange={(e) => handleQuantityChange(item.id, e)}
+                        >
+                          {[...Array(5).keys()].map((num) => (
+                            <option key={num + 1} value={num + 1}>
+                              {num + 1}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                      <div className="price_data">
+                        <p className="price_text"> Price:</p>
+                        <p className="price"> ${item.price}.00</p>
+                      </div>
+
+                      <button
+                        className="iconButton"
+                        onClick={() => removeToCart(item.id)}
                       >
-                        {[...Array(5).keys()].map((num) => (
-                          <option key={num + 1} value={num + 1}>
-                            {num + 1}
-                          </option>
-                        ))}
-                      </select>
+                        {" "}
+                        <MdOutlineDelete size={25} />
+                      </button>
                     </div>
-                    <div className="price_data">
-                      <p className="price_text"> Price:</p>
-                      <p className="price"> ${item.price}.00</p>
-                    </div>
-
-                    <button
-                      className="iconButton"
-                      onClick={() => removeToCart(item.id)}
-                    >
-                      {" "}
-                      <MdOutlineDelete size={25} />
-                    </button>
                   </li>
-                  <div className="line-2 mt-2"></div>
-                </ul>
-              ))}
+                ))}
+              </ul>
+            )}
           </div>
         </Col>
         <Col lg="4">

@@ -1,7 +1,7 @@
 .card_img img {
   width: 100%;
   border-radius: 5px 5px 0 0;
-
+cursor: pointer;
   aspect-ratio: 3/2;
   object-fit: contain;
   transition: transform 0.3s ease, opacity 0.3s ease;

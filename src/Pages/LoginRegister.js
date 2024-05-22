@@ -42,7 +42,7 @@ function LoginRegister() {
             </div>
             <div className="col-md-7 col-lg-5 col-xl-5 offset-xl-1   form-body-style">
               <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start mb-4">
-                <p className="lead fw-normal mb-0 me-3">Sign in with :</p>
+                <p className="lead fw-normal mb-0 me-3">Sign in with</p>
                 <button
                   type="button"
                   data-mdb-button-init

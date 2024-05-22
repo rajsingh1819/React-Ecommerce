@@ -5,8 +5,11 @@ import "./style/order.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Offers } from "../assets/Constants/Constant";
+import { useNavigate } from "react-router-dom";
 
 function Order() {
+  const navigate = useNavigate();
+
   const [status, setStatus] = useState("Placed");
   const [isLoggedIn, setIsLoggedIn] = useState(null);
   const [products, setProducts] = useState([]);
@@ -14,7 +17,7 @@ function Order() {
   const [openModal, setOpenModal] = useState(false);
   const [totalAmount, setTotalAmount] = useState(null);
   const { deliveryCharges, taxCharge } = Offers;
-
+  console.log("products ===>", products);
   const notifyDelete = () => {
     toast.success("Your Order has been canceled!", {
       position: "top-center",
@@ -172,11 +175,17 @@ function Order() {
                                 src={innerItem.Image}
                                 className="img-style"
                                 alt="orderimg"
+                                onClick={() =>
+                                  navigate(
+                                    `/product/${innerItem.category}/${innerItem.id}`
+                                  )
+                                }
                               />
                               <i>{innerItem.title}</i>
                               <i>
                                 {" "}
-                                <span>Price: </span>${innerItem.price}
+                                <span>Price: </span>$
+                                {innerItem.price * innerItem.quantity}
                               </i>
                             </div>
 

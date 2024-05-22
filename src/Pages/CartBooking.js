@@ -189,7 +189,9 @@ function CartBooking() {
                   value={zip}
                   max={999999}
                   min={99999}
-                  onChange={(e) => setZip(e.target.value)}
+                  onChange={(e) => {
+                    e.target.value.length <= 8 && setZip(e.target.value);
+                  }}
                 />
               </div>
 
