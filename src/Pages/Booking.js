@@ -14,7 +14,7 @@ function Booking() {
 
   const navigate = useNavigate();
   const location = useLocation();
-  const { data, avgRating, taxCharge, deliveryCharges } = location.state;
+  const { data, avgRating, taxCharge, deliveryCharges } = location.state || {};
 
   const { price, reviews } = data;
   const [fullName, setFullName] = useState("");

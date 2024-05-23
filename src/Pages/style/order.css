@@ -20,7 +20,8 @@
   padding: 2%;
   border-radius: 10px;
 
-  border: 2px solid violet;
+  border: 1px solid #978f74;;
+
 
   box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
 }
@@ -68,6 +69,7 @@ li {
   border-radius: 0.5rem;
   height: 4rem;
   width: 4rem;
+  cursor: pointer;
 }
 .image-title {
   display: flex;
@@ -112,16 +114,33 @@ li {
 }
 .child .cancel-order button {
   padding: 5px;
-  background-color: black;
+  background-color: #DC3545;
   color: white;
   border-radius: 10px;
 }
 
-.payment-type {
+.payment-type{
   display: flex;
   align-items: center;
   justify-content: end;
 }
+
+.note{
+  margin-top: 6%;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  font-weight: bold;
+  
+}
+.note span{
+  color: #DC3545;
+  
+   
+}
+
+
+
 .total-amount {
   display: flex;
   align-items: center;

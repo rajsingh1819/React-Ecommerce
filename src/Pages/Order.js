@@ -17,7 +17,7 @@ function Order() {
   const [openModal, setOpenModal] = useState(false);
   const [totalAmount, setTotalAmount] = useState(null);
   const { deliveryCharges, taxCharge } = Offers;
-  console.log("products ===>", products);
+
   const notifyDelete = () => {
     toast.success("Your Order has been canceled!", {
       position: "top-center",
@@ -227,6 +227,10 @@ function Order() {
                 </div>
               ))}
           </div>
+          <div className="note">
+            <span>*Note : </span>
+            <p className="mx-1">Price = Price * Quantity</p>
+          </div>
         </div>
       ) : (
         <EmptyCart />
@@ -242,7 +246,7 @@ function Order() {
         </Modal.Body>
         <Modal.Footer className="d-flex justify-content-center">
           <Button onClick={() => setOpenModal(false)} variant="secondary">
-            Cancel
+            Back
           </Button>
           <Button onClick={handleOrder} variant="primary">
             Ok
