@@ -81,6 +81,19 @@ function Header() {
     setShowSearch(false);
   };
 
+  //when scroll ShowSearch will be hide
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowSearch(false);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <header className="header" ref={headerRef}>
       <Container>

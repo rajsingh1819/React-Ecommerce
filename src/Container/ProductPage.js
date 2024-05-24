@@ -169,6 +169,17 @@ function ProductPage(props) {
     setShowOptions(false);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowOptions(false);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
     <>
       <Container className="Product_item">

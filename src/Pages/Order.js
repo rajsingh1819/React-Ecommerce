@@ -182,7 +182,7 @@ function Order() {
                                 }
                               />
                               <i>{innerItem.title}</i>
-                              <i>
+                              <i className="order-price">
                                 {" "}
                                 <span>Price: </span>$
                                 {innerItem.price * innerItem.quantity}
