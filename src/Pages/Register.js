@@ -39,10 +39,10 @@ function Register({ showForm, setShowForm }) {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     if (name === "name") {
-      setNameLengthWarning(value.length > 10);
+      setNameLengthWarning(value.length < 5 || value.length > 10);
     }
     if (name === "password") {
-      setPasswordLengthWarning(value.length > 10);
+      setPasswordLengthWarning(value.length < 5 || value.length > 10);
     }
     setFormData((prevState) => ({
       ...prevState,
@@ -53,7 +53,12 @@ function Register({ showForm, setShowForm }) {
   const actionSubmitRegister = (event) => {
     event.preventDefault();
 
-    if (formData.name.length > 10 || formData.password.length > 10) {
+    if (
+      formData.name.length > 10 ||
+      formData.password.length > 10 ||
+      formData.name.length < 5 ||
+      formData.password.length < 5
+    ) {
       return false;
     }
 
@@ -112,7 +117,7 @@ function Register({ showForm, setShowForm }) {
         />
       </div>
       <span style={{ color: "red" }}>
-        {nameLengthWarning && "*Name length min 10 characters long!"}
+        {nameLengthWarning && "*Name length min 5 and max 10 char long!"}
       </span>
 
       <div className="form-outline mb-4">
@@ -144,7 +149,8 @@ function Register({ showForm, setShowForm }) {
         </span>
       </div>
       <span style={{ color: "red" }}>
-        {passwordLengthWarning && "*Password length min 10 characters long!"}
+        {passwordLengthWarning &&
+          "*Password length min 5 and max 10 char long!"}
       </span>
 
       <div className="text-center text-lg-start mt-4 pt-2 style-Buttonstyle-p ">

@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { allProductData } from "../assets/Constants/Constant";
 import { Col, Container, Row } from "react-bootstrap";
 import CardItems from "../Container/CardItems";
+import Newsletter from ".././Container/Newsletter";
 
 function SearchPage() {
   const location = useLocation();
@@ -22,20 +23,23 @@ function SearchPage() {
   });
 
   return (
-    <Container>
-      <h3 className="h3Style">Search Results for "{query}"</h3>
-      <Row>
-        {filteredData.length > 0 ? (
-          filteredData.map((item) => (
-            <Col lg="3" className="mb-4 card-style" key={item.id}>
-              <CardItems item={item} />
-            </Col>
-          ))
-        ) : (
-          <p>No results found.</p>
-        )}
-      </Row>
-    </Container>
+    <>
+      <Container>
+        <h3 className="h3Style">Search Results for "{query}"</h3>
+        <Row>
+          {filteredData.length > 0 ? (
+            filteredData.map((item) => (
+              <Col lg="3" className="mb-4 card-style" key={item.id}>
+                <CardItems item={item} />
+              </Col>
+            ))
+          ) : (
+            <p>No results found.</p>
+          )}
+        </Row>
+      </Container>
+      <Newsletter />
+    </>
   );
 }
 

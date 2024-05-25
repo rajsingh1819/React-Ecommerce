@@ -11,6 +11,7 @@ import { Offers } from "../assets/Constants/Constant";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { v4 as uuidv4 } from "uuid";
+import Newsletter from "./Newsletter";
 
 function ProductPage(props) {
   const { addToCart, cart, removeToCart } = useCartContext();
@@ -19,8 +20,8 @@ function ProductPage(props) {
   const [goToCart, setGoToCart] = useState(true);
   const [mobileRating, setMobileRating] = useState(null);
   const [userMsg, setUserMsg] = useState("");
-  const { id, title, Image, price, desc, reviews, category } = data;
-  const { deliveryCharges, taxCharge } = Offers;
+  const { id, title, Image, price, desc, reviews, category } = data || {};
+  const { deliveryCharges, taxCharge } = Offers || {};
 
   const [reviewData, setReviewData] = useState([]);
   const [showOptions, setShowOptions] = useState({});
@@ -263,7 +264,7 @@ function ProductPage(props) {
           </Col>
 
           <Col lg="5">
-            <div className="user-rating">
+            <div className="user-rating ">
               <h5>
                 Reviews (
                 {totalReview
@@ -383,6 +384,7 @@ function ProductPage(props) {
           </Col>
         </Row>
       </Container>
+      <Newsletter />
     </>
   );
 }

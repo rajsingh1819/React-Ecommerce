@@ -10,7 +10,7 @@ import { useCartContext } from "../Context/Cart_Context";
 function CardItems({ item }) {
   const navigation = useNavigate();
   const { cart, addToCart, removeToCart } = useCartContext();
-  const { id, title, Image, price, featured, reviews, category } = item;
+  const { id, title, Image, price, featured, reviews, category } = item || {};
 
   const [reviewData, setReviewData] = useState([]);
   const totalReview = [

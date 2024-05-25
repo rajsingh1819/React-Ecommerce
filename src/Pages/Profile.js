@@ -77,7 +77,7 @@ function Profile() {
                   className="profile-img"
                 />
               </div>
-              <h3>{userLogin?.name}</h3>
+              <h3>{userLogin?.name?.toUpperCase() || "USER NAME"}</h3>
               <h5>{userLogin?.role}</h5>
               <h6 className="contactUS">Contact US</h6>
               <div className="usericonSection mb-2">
@@ -141,6 +141,7 @@ function Profile() {
                   name="message"
                   placeholder="Type your message here..."
                   rows="5"
+                  autoComplete="given-name"
                   value={contactUS.message}
                   onChange={handleInputChange}
                 />

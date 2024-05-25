@@ -14,7 +14,7 @@ function CartBooking() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const { deliveryCharges, cart, total, taxCharge } = location.state;
+  const { deliveryCharges, cart, total, taxCharge } = location.state || {};
 
   const [fullName, setFullName] = useState("");
   const [phone, setPhone] = useState("");
