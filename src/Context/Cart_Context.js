@@ -40,7 +40,7 @@ const CartProvider = ({ children }) => {
     dispatch({ type: "ADD_TO_CART", payload: { data } });
     toast.success("Item added to cart!", {
       position: "top-center",
-      autoClose: 2000,
+      autoClose: 100000000,
       theme: "dark",
     });
   };

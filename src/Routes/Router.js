@@ -14,6 +14,7 @@ import PAGE_NOT_FOUND from "../Pages/PAGE_NOT_FOUND";
 import SearchPage from "../Pages/SearchPage";
 import Profile from "../Pages/Profile";
 import About from "../Pages/About";
+import GoToTop from "../Container/GoToTop";
 
 function Router() {
   const { pathname } = useLocation();
@@ -23,32 +24,38 @@ function Router() {
   }, [pathname]);
 
   return (
-    <Routes>
-      <Route path="/" element={<Navigate to="/home" />} />
-      <Route path="/home" element={<Home />} />
-      <Route path="/product/:mobile/:id" element={<Mobile />} />
-      <Route path="/product/:fashion/:id" element={<Fashion />} />
-      <Route path="/login" element={<LoginRegister />} />
+    <>
+      <GoToTop />
+      <Routes>
+        <Route path="/" element={<Navigate to="/home" />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/product/:mobile/:id" element={<Mobile />} />
+        <Route path="/product/:fashion/:id" element={<Fashion />} />
+        <Route path="/login" element={<LoginRegister />} />
 
-      <Route path="/cart" element={<AddToCart />} />
-      <Route path="/profile" element={<ProtectedRoute Component={Profile} />} />
-      <Route
-        path="/cart/booking"
-        element={<ProtectedRoute Component={CartBooking} />}
-      />
+        <Route path="/cart" element={<AddToCart />} />
+        <Route
+          path="/profile"
+          element={<ProtectedRoute Component={Profile} />}
+        />
+        <Route
+          path="/cart/booking"
+          element={<ProtectedRoute Component={CartBooking} />}
+        />
 
-      <Route path="/products/:category/:filter?" element={<Category />} />
-      <Route path="/order" element={<Order />} />
+        <Route path="/products/:category/:filter?" element={<Category />} />
+        <Route path="/order" element={<Order />} />
 
-      <Route
-        path="/product/:mobile/:id/booking"
-        element={<ProtectedRoute Component={Booking} Booking />}
-      />
+        <Route
+          path="/product/:mobile/:id/booking"
+          element={<ProtectedRoute Component={Booking} Booking />}
+        />
 
-      <Route path="/*" element={<PAGE_NOT_FOUND />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/search" element={<SearchPage />} />
-    </Routes>
+        <Route path="/*" element={<PAGE_NOT_FOUND />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/search" element={<SearchPage />} />
+      </Routes>
+    </>
   );
 }
 
