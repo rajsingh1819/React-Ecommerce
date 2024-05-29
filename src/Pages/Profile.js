@@ -3,10 +3,9 @@ import "./style/profile.css";
 import { Container, Row, Col } from "react-bootstrap";
 import userImage from "../../src/assets/images/userPng.png";
 import { v4 as uuidv4 } from "uuid";
-import { toast } from "react-toastify";
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
-import "react-toastify/dist/ReactToastify.css";
+import toast from "react-hot-toast";
 import { useCartContext } from "../Context/Cart_Context";
 
 function Profile() {
@@ -17,16 +16,15 @@ function Profile() {
 
   const notifySuccess = () =>
     toast.success("Message Sent Successfully!", {
-      position: "top-center",
-      autoClose: 2000,
-      theme: "dark",
+      duration: 2000,
+      className: "hot-toast",
     });
 
   const notifyInfo = () => {
-    toast.info("Message should not be empty!", {
-      position: "top-center",
-      autoClose: 2000,
-      theme: "dark",
+    toast("Message should not be empty!", {
+      icon: <span className="hot-toast-icon">ⓘ</span>,
+      duration: 2000,
+      className: "hot-toast",
     });
   };
 

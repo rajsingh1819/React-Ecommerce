@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { IoEyeSharp, IoEyeOffSharp } from "react-icons/io5";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import toast from "react-hot-toast";
 
 function ForgotPassword({ setForgotAction }) {
   const [showPasswordForm, setShowPasswordForm] = useState(false);
@@ -37,17 +36,16 @@ function ForgotPassword({ setForgotAction }) {
 
   const notifySuccess = (message) => {
     toast.success(message, {
-      position: "top-center",
-      autoClose: 2000,
-      theme: "dark",
+      duration: 2000,
+      className: "hot-toast",
     });
   };
 
   const notifyInfo = (message) => {
-    toast.info(message, {
-      position: "top-center",
-      autoClose: 2000,
-      theme: "dark",
+    toast(message, {
+      icon: <span className="hot-toast-icon">ⓘ</span>,
+      duration: 2000,
+      className: "hot-toast",
     });
   };
 

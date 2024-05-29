@@ -3,8 +3,7 @@ import { Button } from "react-bootstrap";
 import userImage from "../../src/assets/images/userPng.png";
 import "./styles/dropDownProfile.css";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import toast from "react-hot-toast";
 
 function DropDownProfile() {
   const [openProfile, setOpenProfile] = useState(false);
@@ -19,9 +18,8 @@ function DropDownProfile() {
     setIsLoggedIn(false);
     navigate("/home");
     toast.success("User Logout Successfully!", {
-      position: "top-center",
-      autoClose: 2000,
-      theme: "dark",
+      duration: 3000,
+      className: "hot-toast",
     });
   };
 

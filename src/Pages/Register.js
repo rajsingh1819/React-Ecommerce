@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { IoEyeSharp, IoEyeOffSharp } from "react-icons/io5";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import toast from "react-hot-toast";
 import { v4 as uuidv4 } from "uuid";
 
 function Register({ showForm, setShowForm }) {
@@ -21,18 +20,17 @@ function Register({ showForm, setShowForm }) {
   };
 
   const notifySuccess = () => {
-    toast.success("User Register Successfully!", {
-      position: "top-center",
-      autoClose: 2000,
-      theme: "dark",
+    toast.success("User Registered Successfully!", {
+      duration: 2000,
+      className: "hot-toast",
     });
   };
 
   const notifyError = () => {
-    toast.error("User Already registered!", {
-      position: "top-center",
-      autoClose: 2000,
-      theme: "dark",
+    toast("User Already registered!", {
+      icon: <span className="hot-toast-icon">ⓘ</span>,
+      duration: 2000,
+      className: "hot-toast",
     });
   };
 

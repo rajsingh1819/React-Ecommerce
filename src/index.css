@@ -18,86 +18,39 @@ code {
 
 
 
-.Toastify__toast--success {
-  margin-top: 5%;
- 
-  border-radius: 50px !important;
-  
-}
-.Toastify__toast--info {
-   margin-top: 5%;
- 
-  border-radius: 50px !important;
-  
-}
 
-.Toastify__toast--error {
-  margin-top: 5%;
 
- border-radius: 50px !important;
+
+/* toast css */
+
+.hot-toast {
+  background-color: orange !important;
+  color: white !important;
+  margin-top: 2%;
+  font-size: 1.2rem;
+  border-radius: 15px !important;
+  border-radius: 15px;
  
 }
-
-.Toastify__toast--warning{
-  margin-top: 5%;
-
- border-radius: 50px !important;
+.hot-toast-icon{
+  font-size: 1.7rem !important;
+  color: blue;
  
 }
-
-
-@media only screen and (max-width: 482px){ 
-
-
-
-  .Toastify__toast-body {
-    font-size: 16px;
-    padding-left: 20px;
-    line-height: 20px;
-    padding: 0px;
-    padding-top: 25px;
-    width: 50%;
-    font-weight: 400;
-    margin-left: 5px !important;
-  } 
-  
-
-  .Toastify__toast-container--top-center {
-    
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    max-width: 100%;
+@media (max-width: 500px) {
+  .hot-toast {
+    font-size: 0.8rem !important;
+    border-radius: 15px !important;
+    background-color: orange !important;
+    color: white !important;
+    margin-top: 5% !important;
   }
-
-
-  .Toastify__toast--success {
-    margin-top: 5%;
+  .hot-toast-icon{
+    color:blue;
+    font-size: 1.4rem !important;
    
-    border-radius: 50px !important;
-    
-  }
-  .Toastify__toast--info {
-     margin-top: 5%;
-   
-    border-radius: 50px !important;
-    
-  }
-
-  .Toastify__toast--error {
-    margin-top: 5%;
-  
-   border-radius: 50px !important;
-   
-  }
-
-  .Toastify__toast--warning{
-    margin-top: 5%;
-  
-   border-radius: 50px !important;
    
   }
 }
+
 

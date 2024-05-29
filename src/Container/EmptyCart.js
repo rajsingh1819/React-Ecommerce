@@ -20,7 +20,7 @@ function EmptyCart() {
                   width="200"
                   height="200"
                   className="img-fluid mb-4 mr-3"
-                  alt="Empty Cart Image"
+                  alt="Empty Cart"
                   loading="lazy"
                 />
                 {location.pathname === "/cart" ? (

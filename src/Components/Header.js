@@ -70,7 +70,7 @@ function Header() {
   };
 
   const handleSearchInput = (e) => {
-    setSearchTerm(e.target.value);
+    e.target.value.length <= 40 && setSearchTerm(e.target.value);
   };
 
   const handleSearchSubmit = (e) => {

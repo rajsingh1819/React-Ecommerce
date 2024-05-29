@@ -2,11 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Button, Container, Modal } from "react-bootstrap";
 import EmptyCart from "../Container/EmptyCart";
 import "./style/order.css";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { Offers } from "../assets/Constants/Constant";
 import { useNavigate } from "react-router-dom";
-
+import toast from "react-hot-toast";
 function Order() {
   const navigate = useNavigate();
 
@@ -19,10 +17,9 @@ function Order() {
   const { deliveryCharges, taxCharge } = Offers;
 
   const notifyDelete = () => {
-    toast.success("Your Order has been canceled!", {
-      position: "top-center",
-      autoClose: 2000,
-      theme: "dark",
+    toast.success("Order has been canceled!!", {
+      duration: 3000,
+      className: "hot-toast",
     });
   };
 

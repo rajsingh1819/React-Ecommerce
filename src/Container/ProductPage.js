@@ -8,10 +8,9 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import { useCartContext } from "../Context/Cart_Context";
 import { useNavigate } from "react-router-dom";
 import { Offers } from "../assets/Constants/Constant";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { v4 as uuidv4 } from "uuid";
 import Newsletter from "./Newsletter";
+import toast from "react-hot-toast";
 
 function ProductPage(props) {
   const { addToCart, cart, removeToCart } = useCartContext();
@@ -56,18 +55,17 @@ function ProductPage(props) {
   };
 
   const userReviews = (message) => {
-    toast.info(message, {
-      position: "top-center",
-      autoClose: 2000,
-      theme: "dark",
+    toast(message, {
+      icon: <span className="hot-toast-icon">ⓘ</span>,
+      duration: 2000,
+      className: "hot-toast",
     });
   };
 
   const reviewDone = () => {
-    toast.success("User Review Successfully!!", {
-      position: "top-center",
-      autoClose: 2000,
-      theme: "dark",
+    toast.success("User Review Successfull!!", {
+      duration: 2000,
+      className: "hot-toast",
     });
   };
 
@@ -104,10 +102,9 @@ function ProductPage(props) {
   };
 
   const userNotAvailable = () => {
-    toast.info("User is not logged in!", {
-      position: "top-center",
-      autoClose: 2000,
-      theme: "dark",
+    toast.error("User is not logged in!", {
+      duration: 2000,
+      className: "hot-toast",
     });
   };
 

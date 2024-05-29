@@ -70,7 +70,14 @@ li {
   height: 4rem;
   width: 4rem;
   cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
+
+.image-title .img-style:hover {
+  transform: scale(1.05);
+  opacity: 0.8;
+}
+
 .image-title {
   display: flex;
   width: 50%;

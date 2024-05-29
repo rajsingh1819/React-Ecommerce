@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import "./style/booking.css";
 import { Button, Form, FormGroup, ListGroup } from "react-bootstrap";
 import { FaPlus, FaMinus, FaStar } from "react-icons/fa";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import toast from "react-hot-toast";
 import { paymentData } from "../assets/Constants/Constant";
 import { useLocation, useNavigate } from "react-router-dom";
 import BookingStatus from "./BookingStatus";
@@ -47,10 +46,10 @@ function Booking() {
   const formattedTime = currentDate.toLocaleTimeString("en-IN", options);
 
   const notify = () => {
-    toast.info("Please select a payment method!", {
-      position: "top-center",
-      autoClose: 2000,
-      theme: "dark",
+    toast("Please select a payment method!", {
+      icon: <span className="hot-toast-icon">ⓘ</span>,
+      duration: 2000,
+      className: "hot-toast",
     });
   };
 

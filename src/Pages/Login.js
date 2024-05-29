@@ -1,10 +1,7 @@
 import React, { useState } from "react";
-
 import { IoEyeSharp, IoEyeOffSharp } from "react-icons/io5";
 import { useNavigate, Link } from "react-router-dom";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
+import toast from "react-hot-toast";
 import ForgotPassword from "./ForgotPassword";
 
 function Login({ showForm, setShowForm }) {
@@ -22,18 +19,17 @@ function Login({ showForm, setShowForm }) {
   };
 
   const notifySuccess = () => {
-    toast.success("User Login Successfully!", {
-      position: "top-center",
-      autoClose: 2000,
-      theme: "dark",
+    toast.success("User logged in Successfully!", {
+      duration: 3000,
+      className: "hot-toast",
     });
   };
 
-  const notifyError = (message) => {
-    toast.error(message, {
-      position: "top-center",
-      autoClose: 2000,
-      theme: "dark",
+  const notifyInfo = (message) => {
+    toast(message, {
+      icon: <span className="hot-toast-icon">ⓘ</span>,
+      duration: 2000,
+      className: "hot-toast",
     });
   };
 
@@ -50,7 +46,7 @@ function Login({ showForm, setShowForm }) {
     let registerData = JSON.parse(localStorage.getItem("register"));
 
     if (!registerData) {
-      notifyError("User not registered!");
+      notifyInfo("User not registered!");
     } else {
       const user = registerData.find(
         (user) =>
@@ -58,7 +54,7 @@ function Login({ showForm, setShowForm }) {
       );
 
       if (!user) {
-        notifyError("Email & Password does't match!");
+        notifyInfo("Email & Password does't match!");
       } else {
         notifySuccess();
         const loginData = { ...user, rememberMe: true }; // Combine formData with the name from registerData

@@ -11,8 +11,7 @@ import { useCartContext } from "../Context/Cart_Context";
 import { TbShoppingCartCancel } from "react-icons/tb";
 import { Offers } from "../assets/Constants/Constant";
 
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import toast from "react-hot-toast";
 
 function AddToCart() {
   const [subTotal, setSubTotal] = useState(0);
@@ -24,10 +23,10 @@ function AddToCart() {
   const navigate = useNavigate();
 
   const userNotAvailable = () => {
-    toast.info("User is not logged in!", {
-      position: "top-center",
-      autoClose: 2000,
-      theme: "dark",
+    toast("User is not logged in!", {
+      icon: <span className="hot-toast-icon">ⓘ</span>,
+      duration: 2000,
+      className: "hot-toast",
     });
   };
 

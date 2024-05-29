@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { FaFacebookF, FaTwitter, FaGoogle } from "react-icons/fa";
-import "react-toastify/dist/ReactToastify.css";
 import Login from "./Login";
 import Register from "./Register";
 import "./style/loginRegister.css";
 import loginimage from "../../src/assets/images/login_image.png";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import toast from "react-hot-toast";
 
 import { useNavigate } from "react-router-dom";
 
@@ -16,10 +14,10 @@ function LoginRegister() {
   const isLoggedIn = localStorage.getItem("login");
 
   const iconsLogin = () => {
-    toast.info("Not Working Phase!", {
-      position: "top-center",
-      autoClose: 2000,
-      theme: "dark",
+    toast("Not Working Phase!", {
+      icon: <span className="hot-toast-icon">ⓘ</span>,
+      duration: 2000,
+      className: "hot-toast",
     });
   };
 

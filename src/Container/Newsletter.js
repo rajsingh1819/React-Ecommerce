@@ -2,16 +2,21 @@ import React, { useState } from "react";
 import "./styles/newsletter.css";
 import { Container, Row, Col } from "react-bootstrap";
 import maleTourist from "../../src/assets/male-tourist.png";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import toast from "react-hot-toast";
 function Newsletter() {
   const [userEmail, setUserEmail] = useState("");
 
   const emailInfo = (message) => {
-    toast.info(message, {
-      position: "top-center",
-      autoClose: 2000,
-      theme: "dark",
+    toast(message, {
+      icon: <span className="hot-toast-icon">ⓘ</span>,
+      duration: 2000,
+      className: "hot-toast",
+    });
+  };
+  const emailSuccess = (message) => {
+    toast.success(message, {
+      duration: 2000,
+      className: "hot-toast",
     });
   };
 
@@ -24,8 +29,8 @@ function Newsletter() {
     !userEmail
       ? emailInfo("Please enter your email first!")
       : (() => {
-          emailInfo("Email was submitted!");
-          console.log(userEmail);
+          emailSuccess("Email was submitted!");
+          // console.log(userEmail);
           setUserEmail("");
         })();
   };
