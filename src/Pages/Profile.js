@@ -78,7 +78,7 @@ function Profile() {
               <h3>{userLogin?.username?.toUpperCase() || "USER NAME"}</h3>
               <h5>{userLogin?.role}</h5>
               <h6 className="contactUS">Contact US</h6>
-              <div className="usericonSection mb-2">
+              <div className="usericonSection mb-2  gap-4">
                 <a
                   href="https://github.com/rajsingh1819/React-Ecommerce"
                   target="_blank"
@@ -98,10 +98,10 @@ function Profile() {
           </Col>
           <Col lg={8} className="col-height">
             <div className="user-info">
-              <h5 className="info-title">User Information</h5>
+              <h5 className="info-title">USER INFORMATION</h5>
               <div className="user-details">
                 <h5>
-                  Name: <span>{userLogin?.name}</span>
+                  Name: <span>{userLogin?.username}</span>
                 </h5>
                 <h5>
                   Email: <span>{userLogin?.email}</span>
@@ -131,10 +131,10 @@ function Profile() {
                 </h5>
               </div>
 
-              <h5>Contact Us:</h5>
+              <h5 className="contact-info">Contact Us:</h5>
               <form className="contact-form" onSubmit={handleSubmit}>
                 <textarea
-                  className="form-control rounded-0"
+                  className="form-control rounded-0 mb-2"
                   id="message"
                   name="message"
                   placeholder="Type your message here..."

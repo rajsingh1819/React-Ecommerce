@@ -57,3 +57,17 @@
   }
 }
 
+
+.lenghtWarnning{
+  color: red;
+  font-weight: 500;
+}
+
+@media (max-width:450px){
+  .lenghtWarnning{
+    font-size: 0.8rem;
+    color: red;
+    font-weight: 500;
+  }
+
+}

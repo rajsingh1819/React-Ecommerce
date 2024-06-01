@@ -19,7 +19,9 @@ function ForgotPassword({ setForgotAction }) {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     if (name === "password") {
-      setPasswordLengthWarning(value.length < 5 || value.length > 10);
+      setPasswordLengthWarning(
+        value.length > 0 && (value.length < 5 || value.length > 10)
+      );
     }
     setFormData((prevState) => ({
       ...prevState,
@@ -145,8 +147,8 @@ function ForgotPassword({ setForgotAction }) {
               </span>
             </div>
             {passwordLengthWarning && (
-              <span style={{ color: "red" }}>
-                *Password length must be between 5 and 10 char!
+              <span className="lenghtWarnning">
+                *Password length min 5 and max 10 characters long!
               </span>
             )}
             <div className="mt-4 d-flex align-items-center justify-content-center gap-2">

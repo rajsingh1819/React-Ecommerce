@@ -249,7 +249,7 @@
   .search-sumbit {
     position: absolute;
     left: 10px;
-    top: 20px;
+    top: 18px;
     width: calc(
       100% - 20px
     ); /* Adjusting width considering left and right spacing of 10px */
@@ -267,9 +267,10 @@
   }
 
   .search-input-icon input {
+    
     width: 100%;
     font-size: 1.3rem;
-    padding: 22px 35px 22px 20px;
+    padding: 26px 35px 22px 20px;
     max-height: 50px;
     border: 1px solid black;
     box-sizing: border-box; /* Includes padding and border in the element's total width and height */

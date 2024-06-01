@@ -23,9 +23,25 @@ function Router() {
     window.scrollTo(0, 0);
   }, [pathname]);
 
+  // Define routes where GoToTop should be visible
+  const routesWithGoToTop = [
+    "/home",
+    "/search",
+    "/products/:category/:filter?",
+  ];
+
+  // Function to check if the current path matches any of the specified routes
+  const pathMatches = (path) => {
+    const regexPath = path.replace(/:[^\s/]+/g, "([^/]+)");
+    const regex = new RegExp(`^${regexPath}$`);
+    return regex.test(pathname);
+  };
+
+  const shouldShowGoToTop = routesWithGoToTop.some(pathMatches);
+
   return (
     <>
-      <GoToTop />
+      {shouldShowGoToTop && <GoToTop />}
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/home" element={<Home />} />
