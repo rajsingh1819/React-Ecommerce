@@ -15,7 +15,7 @@
     position: fixed;
     bottom: 5rem;
     right: 5rem;
-    z-index: 999;
+    z-index: 888;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -51,7 +51,7 @@
         position: fixed;
         bottom: 5rem;
         right: 2rem;
-        z-index: 999;
+        z-index: 888;
         display: flex;
         justify-content: center;
         align-items: center;
