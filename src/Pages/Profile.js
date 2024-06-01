@@ -75,7 +75,7 @@ function Profile() {
                   className="profile-img"
                 />
               </div>
-              <h3>{userLogin?.name?.toUpperCase() || "USER NAME"}</h3>
+              <h3>{userLogin?.username?.toUpperCase() || "USER NAME"}</h3>
               <h5>{userLogin?.role}</h5>
               <h6 className="contactUS">Contact US</h6>
               <div className="usericonSection mb-2">

@@ -95,7 +95,7 @@ function DropDownProfile() {
             <img
               ref={iconRef}
               src={userImage}
-              alt={(isLoggedIn?.name).toUpperCase() || "USER NAME"}
+              alt={isLoggedIn?.username?.toUpperCase() || "USER NAME"}
               width={45}
               height={45}
               onClick={handleNameClick}
@@ -107,7 +107,7 @@ function DropDownProfile() {
             <div className="dropdownProfile" ref={menuRef}>
               <div className="flex flex-col gap-4">
                 <h6 onClick={handleNameClick}>
-                  {(isLoggedIn?.name).toUpperCase()}
+                  {isLoggedIn?.username?.toUpperCase() || "USER NAME"}
                 </h6>
                 <h6 onClick={handleProfileLinkClick}>Profile</h6>
                 <h6 onClick={logout}>Logout</h6>

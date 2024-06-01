@@ -5,15 +5,15 @@ import { v4 as uuidv4 } from "uuid";
 
 function Register({ showForm, setShowForm }) {
   const [formData, setFormData] = useState({
-    name: "",
+    username: "",
     email: "",
     password: "",
     role: "user",
     id: "",
   });
-  const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
-  const [nameLengthWarning, setNameLengthWarning] = useState(false); // State to track name length warning
-  const [passwordLengthWarning, setPasswordLengthWarning] = useState(false); // State to track name length warning
+  const [showPassword, setShowPassword] = useState(false);
+  const [nameLengthWarning, setNameLengthWarning] = useState(false);
+  const [passwordLengthWarning, setPasswordLengthWarning] = useState(false);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -36,7 +36,7 @@ function Register({ showForm, setShowForm }) {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    if (name === "name") {
+    if (name === "username") {
       setNameLengthWarning(value.length < 5 || value.length > 10);
     }
     if (name === "password") {
@@ -44,7 +44,7 @@ function Register({ showForm, setShowForm }) {
     }
     setFormData((prevState) => ({
       ...prevState,
-      [name]: name === "password" ? value.trim() : value, // Trim whitespace only for the password field
+      [name]: name === "password" ? value.trim() : value,
     }));
   };
 
@@ -52,10 +52,10 @@ function Register({ showForm, setShowForm }) {
     event.preventDefault();
 
     if (
-      formData.name.length > 10 ||
-      formData.password.length > 10 ||
-      formData.name.length < 5 ||
-      formData.password.length < 5
+      formData.username?.length > 10 ||
+      formData.password?.length > 10 ||
+      formData.username?.length < 5 ||
+      formData.password?.length < 5
     ) {
       return false;
     }
@@ -68,28 +68,30 @@ function Register({ showForm, setShowForm }) {
     if (alreadyUser) {
       notifyError();
     } else {
-      const newUser = { ...formData, id: uuidv4() }; // Generate unique id using uuidv4()
+      const newUser = { ...formData, id: uuidv4() };
       registerData.push(newUser);
       localStorage.setItem("register", JSON.stringify(registerData));
       clearFormFields();
       setShowForm(!showForm);
       notifySuccess();
 
-      setFormData({
-        ...formData,
+      setFormData((prevState) => ({
+        ...prevState,
         id: "",
-      });
+      }));
     }
   };
 
   const clearFormFields = () => {
     setFormData({
-      name: "",
+      username: "",
       email: "",
       password: "",
+      role: "user",
       id: "",
     });
     setNameLengthWarning(false);
+    setPasswordLengthWarning(false);
   };
 
   return (
@@ -98,27 +100,25 @@ function Register({ showForm, setShowForm }) {
         <p className="text-center fw-bold mx-3 mb-0">Or</p>
       </div>
 
-      <div
-        className="form-outline"
-        style={{ marginBottom: !nameLengthWarning && "1.5rem" }}
-      >
+      <div className="form-outline mb-3">
         <input
           type="text"
           className="form-control form-control-lg"
-          placeholder="Enter user name"
-          name="name"
-          value={formData.name}
+          placeholder="Enter username"
+          name="username"
+          value={formData.username}
           onChange={handleInputChange}
-          autoComplete="user"
-          onFocus={() => setShowPassword(false)}
+          autoComplete="username"
           required
         />
+        {nameLengthWarning && (
+          <span style={{ color: "red" }}>
+            *Name length must be between 5 and 10 char!
+          </span>
+        )}
       </div>
-      <span style={{ color: "red" }}>
-        {nameLengthWarning && "*Name length min 5 and max 10 char long!"}
-      </span>
 
-      <div className="form-outline mb-4">
+      <div className="form-outline mb-3">
         <input
           type="email"
           className="form-control form-control-lg"
@@ -127,11 +127,11 @@ function Register({ showForm, setShowForm }) {
           value={formData.email}
           onChange={handleInputChange}
           autoComplete="email"
-          onFocus={() => setShowPassword(false)}
           required
         />
       </div>
-      <div className="form-outline  icon-hide-show">
+
+      <div className="form-outline mb-2 icon-hide-show">
         <input
           type={showPassword ? "text" : "password"}
           className="form-control form-control-lg"
@@ -146,25 +146,22 @@ function Register({ showForm, setShowForm }) {
           {showPassword ? <IoEyeSharp /> : <IoEyeOffSharp />}
         </span>
       </div>
-      <span style={{ color: "red" }}>
-        {passwordLengthWarning &&
-          "*Password length min 5 and max 10 char long!"}
-      </span>
+      {passwordLengthWarning && (
+        <span style={{ color: "red" }}>
+          *Password length must be between 5 and 10 char!
+        </span>
+      )}
 
-      <div className="text-center text-lg-start mt-4 pt-2 style-Buttonstyle-p ">
-        <button
-          type="submit"
-          className="btn btn-primary btn-lg"
-          onFocus={() => setShowPassword(false)}
-        >
+      <div className="text-center text-lg-start mt-4 pt-2">
+        <button type="submit" className="btn btn-primary btn-lg">
           Register
         </button>
-        <p
-          className="small fw-bold mt-2 pt-1 mb-0"
-          onClick={() => setShowForm(!showForm)}
-        >
+        <p className="small fw-bold mt-2 pt-1 mb-0">
           Already have an account?
-          <span className="link-danger"> Login</span>
+          <span className="link-danger" onClick={() => setShowForm(!showForm)}>
+            {" "}
+            Login
+          </span>
         </p>
       </div>
     </form>

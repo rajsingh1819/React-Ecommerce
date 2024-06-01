@@ -84,7 +84,7 @@ function ProductPage(props) {
         const review = {
           id: uuidv4(),
           productId: id,
-          name: JSON.parse(login)?.name || "Anonymous user",
+          name: JSON.parse(login)?.username || "Anonymous user",
           userId: JSON.parse(login)?.id || "Anonymous user id",
           message: userMsg,
           rating: mobileRating,

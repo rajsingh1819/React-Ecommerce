@@ -19,7 +19,7 @@ function ForgotPassword({ setForgotAction }) {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     if (name === "password") {
-      setPasswordLengthWarning(value.length > 10);
+      setPasswordLengthWarning(value.length < 5 || value.length > 10);
     }
     setFormData((prevState) => ({
       ...prevState,
@@ -72,7 +72,7 @@ function ForgotPassword({ setForgotAction }) {
   const handleChangePasswordSubmit = (e) => {
     e.preventDefault();
     const { email, password } = formData;
-    if (password?.length > 10) {
+    if (password?.length > 10 || password?.length < 5) {
       return false;
     }
 
@@ -81,7 +81,7 @@ function ForgotPassword({ setForgotAction }) {
       user.email === email ? { ...user, password } : user
     );
     localStorage.setItem("register", JSON.stringify(updatedUsers));
-    notifySuccess("Password changed Successfully!");
+    notifySuccess("Password changed successfully!");
     clearFormFields();
     setShowPasswordForm(false);
     setForgotAction(false);
@@ -91,11 +91,18 @@ function ForgotPassword({ setForgotAction }) {
     setShowPasswordForm(false);
     setForgotAction(false);
   };
+
   return (
-    <>
-      {!showPasswordForm ? (
-        <div>
-          <form onSubmit={handleCheckEmailSubmit}>
+    <div>
+      <form
+        onSubmit={
+          !showPasswordForm
+            ? handleCheckEmailSubmit
+            : handleChangePasswordSubmit
+        }
+      >
+        {!showPasswordForm ? (
+          <div>
             <h6 style={{ color: "red" }}>Forgot Password!</h6>
             <h6> Enter Your Registered email id!</h6>
             <div className="form-outline mb-4">
@@ -116,12 +123,10 @@ function ForgotPassword({ setForgotAction }) {
               </Button>
               <Button type="submit">Submit</Button>
             </div>
-          </form>
-        </div>
-      ) : (
-        <div>
-          <form onSubmit={handleChangePasswordSubmit}>
-            <h6 style={{ color: "red" }}>Email : {formData?.email}</h6>
+          </div>
+        ) : (
+          <div>
+            <h6 style={{ color: "red" }}>Email: {formData?.email}</h6>
             <h6>Create Your New Password!</h6>
 
             <div className="form-outline mb-2 icon-hide-show">
@@ -139,20 +144,21 @@ function ForgotPassword({ setForgotAction }) {
                 {showPassword ? <IoEyeSharp /> : <IoEyeOffSharp />}
               </span>
             </div>
-            <h6 style={{ color: "red" }}>
-              {passwordLengthWarning &&
-                "*Password length min 10 characters long!"}
-            </h6>
+            {passwordLengthWarning && (
+              <span style={{ color: "red" }}>
+                *Password length must be between 5 and 10 char!
+              </span>
+            )}
             <div className="mt-4 d-flex align-items-center justify-content-center gap-2">
               <Button type="button" onClick={closeAll}>
                 Close
               </Button>
               <Button type="submit">Change Password</Button>
             </div>
-          </form>
-        </div>
-      )}
-    </>
+          </div>
+        )}
+      </form>
+    </div>
   );
 }
 

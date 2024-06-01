@@ -7,8 +7,10 @@ import loginimage from "../../src/assets/images/login_image.png";
 import toast from "react-hot-toast";
 
 import { useNavigate } from "react-router-dom";
+import ForgotPassword from "./ForgotPassword";
 
 function LoginRegister() {
+  const [forgotAction, setForgotAction] = useState(false);
   const [showForm, setShowForm] = useState(true);
   const navigate = useNavigate();
   const isLoggedIn = localStorage.getItem("login");
@@ -69,9 +71,15 @@ function LoginRegister() {
                   <FaTwitter />
                 </button>
               </div>
-
-              {showForm ? (
-                <Login showForm={showForm} setShowForm={setShowForm} />
+              {forgotAction ? (
+                <ForgotPassword setForgotAction={setForgotAction} />
+              ) : showForm ? (
+                <Login
+                  showForm={showForm}
+                  setShowForm={setShowForm}
+                  forgotAction={forgotAction}
+                  setForgotAction={setForgotAction}
+                />
               ) : (
                 <Register showForm={showForm} setShowForm={setShowForm} />
               )}

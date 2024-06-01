@@ -2,11 +2,9 @@ import React, { useState } from "react";
 import { IoEyeSharp, IoEyeOffSharp } from "react-icons/io5";
 import { useNavigate, Link } from "react-router-dom";
 import toast from "react-hot-toast";
-import ForgotPassword from "./ForgotPassword";
 
-function Login({ showForm, setShowForm }) {
+function Login({ showForm, setShowForm, setForgotAction }) {
   const navigation = useNavigate();
-  const [forgotAction, setForgotAction] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -41,13 +39,24 @@ function Login({ showForm, setShowForm }) {
     }));
   };
 
+  const checkIfEmailExists = (email) => {
+    const users = JSON.parse(localStorage.getItem("register")) || [];
+    return users.some((user) => user.email === email);
+  };
+
   const actionSubmitLogin = (event) => {
+    const { email } = formData;
     event.preventDefault();
     let registerData = JSON.parse(localStorage.getItem("register"));
 
     if (!registerData) {
       notifyInfo("User not registered!");
     } else {
+      if (!checkIfEmailExists(email)) {
+        notifyInfo("User not registered!");
+        return;
+      }
+
       const user = registerData.find(
         (user) =>
           user.email === formData.email && user.password === formData.password
@@ -78,86 +87,85 @@ function Login({ showForm, setShowForm }) {
 
   return (
     <>
-      {!forgotAction ? (
-        <form onSubmit={actionSubmitLogin}>
-          <div className="divider d-flex align-items-center my-4">
-            <p className="text-center fw-bold mx-3 mb-0">Or</p>
-          </div>
+      {/* {!forgotAction ? ( */}
+      <form onSubmit={actionSubmitLogin}>
+        <div className="divider d-flex align-items-center my-4">
+          <p className="text-center fw-bold mx-3 mb-0">Or</p>
+        </div>
 
-          <div className="form-outline mb-4">
+        <div className="form-outline mb-4">
+          <input
+            type="email"
+            className="form-control form-control-lg"
+            placeholder="Enter a valid email address"
+            name="email"
+            value={formData.email}
+            onChange={handleInputChange}
+            autoComplete="email"
+            onFocus={() => setShowPassword(false)}
+            required
+          />
+        </div>
+        <div className="form-outline mb-3  icon-hide-show">
+          <input
+            type={showPassword ? "text" : "password"}
+            className="form-control form-control-lg"
+            placeholder="Enter password"
+            name="password"
+            value={formData.password}
+            onChange={handleInputChange}
+            autoComplete="current-password"
+            required
+          />
+          <span onClick={togglePasswordVisibility}>
+            {showPassword ? <IoEyeSharp /> : <IoEyeOffSharp />}
+          </span>
+        </div>
+
+        <div className="d-flex justify-content-between align-items-center">
+          <div className="form-check mb-0">
             <input
-              type="email"
-              className="form-control form-control-lg"
-              placeholder="Enter a valid email address"
-              name="email"
-              value={formData.email}
+              className="form-check-input me-2"
+              type="checkbox"
+              id="form2Example3"
+              name="rememberMe"
+              checked={formData.rememberMe}
               onChange={handleInputChange}
-              autoComplete="email"
               onFocus={() => setShowPassword(false)}
               required
             />
+            <label className="form-check-label" htmlFor="form2Example3">
+              Remember me
+            </label>
           </div>
-          <div className="form-outline mb-3  icon-hide-show">
-            <input
-              type={showPassword ? "text" : "password"}
-              className="form-control form-control-lg"
-              placeholder="Enter password"
-              name="password"
-              value={formData.password}
-              onChange={handleInputChange}
-              autoComplete="current-password"
-              required
-            />
-            <span onClick={togglePasswordVisibility}>
-              {showPassword ? <IoEyeSharp /> : <IoEyeOffSharp />}
-            </span>
-          </div>
+          <Link
+            to="#"
+            className="text-body"
+            onClick={() => setForgotAction(true)}
+          >
+            Forgot password?
+          </Link>
+        </div>
 
-          <div className="d-flex justify-content-between align-items-center">
-            <div className="form-check mb-0">
-              <input
-                className="form-check-input me-2"
-                type="checkbox"
-                id="form2Example3"
-                name="rememberMe"
-                checked={formData.rememberMe}
-                onChange={handleInputChange}
-                onFocus={() => setShowPassword(false)}
-                required
-              />
-              <label className="form-check-label" htmlFor="form2Example3">
-                Remember me
-              </label>
-            </div>
-            <Link
-              to="#"
-              className="text-body"
-              onClick={() => setForgotAction(true)}
-            >
-              Forgot password?
-            </Link>
-          </div>
-
-          <div className="text-center text-lg-start mt-4 pt-2 style-Buttonstyle-p ">
-            <button
-              type="submit"
-              className="btn btn-primary btn-lg"
-              onFocus={() => setShowPassword(false)}
-            >
-              Login
-            </button>
-            <p
-              className="small fw-bold mt-2 pt-1 mb-0"
-              onClick={() => setShowForm(!showForm)}
-            >
-              Don't have an account?
-              <span className="link-danger">Register</span>
-            </p>
-          </div>
-        </form>
-      ) : (
-        <ForgotPassword setForgotAction={setForgotAction} />
-      )}
+        <div className="text-center text-lg-start mt-4 pt-2 style-Buttonstyle-p ">
+          <button
+            type="submit"
+            className="btn btn-primary btn-lg"
+            onFocus={() => setShowPassword(false)}
+          >
+            Login
+          </button>
+          <p
+            className="small fw-bold mt-2 pt-1 mb-0"
+            onClick={() => setShowForm(!showForm)}
+          >
+            Don't have an account?
+            <span className="link-danger">Register</span>
+          </p>
+        </div>
+      </form>
+      {/* // ) : ( // <ForgotPassword setForgotAction={setForgotAction} />
+      // )} */}
     </>
   );
 }
