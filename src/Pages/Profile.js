@@ -80,7 +80,7 @@ function Profile() {
               <h6 className="contactUS">Contact US</h6>
               <div className="usericonSection mb-2">
                 <a
-                  href="https://github.com/rajsingh1819/ecommerce"
+                  href="https://github.com/rajsingh1819/React-Ecommerce"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
