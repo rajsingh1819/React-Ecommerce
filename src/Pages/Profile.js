@@ -7,8 +7,9 @@ import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import toast from "react-hot-toast";
 import { useCartContext } from "../Context/Cart_Context";
-
+import { useNavigate } from "react-router-dom";
 function Profile() {
+  const navigate = useNavigate();
   const { addContact, contact } = useCartContext();
   const [userLogin, setUserLogin] = useState(null);
   const [orderData, setOrderData] = useState([]);
@@ -110,7 +111,7 @@ function Profile() {
 
               <h5 className="info-title">Details</h5>
               <div className="user-details">
-                <h5>
+                <h5 onClick={() => navigate("/order")}>
                   Order:{" "}
                   <span>
                     {
