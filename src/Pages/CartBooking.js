@@ -2,18 +2,14 @@ import React, { useState } from "react";
 import { ListGroup, Form, FormGroup, Button } from "react-bootstrap";
 import toast from "react-hot-toast";
 import { paymentData } from "../assets/Constants/Constant";
-import { useLocation, useNavigate } from "react-router-dom";
-import { useCartContext } from "../Context/Cart_Context";
 import BookingStatus from "./BookingStatus";
 import { v4 as uuidv4 } from "uuid";
 
-function CartBooking() {
+function CartBooking(props) {
   const [showModal, setShowModal] = useState(false);
-  const { RemoveAllCartItem } = useCartContext();
-  const location = useLocation();
-  const navigate = useNavigate();
 
-  const { deliveryCharges, cart, total, taxCharge } = location.state || {};
+  const { deliveryCharges, cart, total, taxCharge, setShowBooking } =
+    props || {};
 
   const [fullName, setFullName] = useState("");
   const [phone, setPhone] = useState("");
@@ -23,15 +19,6 @@ function CartBooking() {
   const [zip, setZip] = useState("");
   const [countryState, setCountryState] = useState("");
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
-
-  const currentDate = new Date();
-  const options = {
-    timeZone: "Asia/Kolkata", // Set the time zone to Indian Standard Time (IST)
-    hour12: true, // Use 12-hour clock format
-  };
-
-  const formattedDate = currentDate.toLocaleDateString("en-IN", options);
-  const formattedTime = currentDate.toLocaleTimeString("en-IN", options);
 
   const notify = () => {
     toast("Please select a payment method!", {
@@ -64,8 +51,8 @@ function CartBooking() {
       taxCharge,
       deliveryCharges,
       selectedPaymentMethod,
-      date: formattedDate,
-      time: formattedTime,
+      date: new Date().toLocaleDateString("en-IN"),
+      time: new Date().toLocaleTimeString("en-IN"),
 
       orders: cart,
     };
@@ -84,15 +71,11 @@ function CartBooking() {
     setCountryState("");
     setSelectedPaymentMethod("");
 
-    // Clear the cart after successful form submission
-    RemoveAllCartItem();
-    // setShowBooking(false);
-
     setShowModal(true);
   };
 
   const goBack = () => {
-    navigate(-1); // Go back one step
+    setShowBooking(false);
   };
 
   return (
@@ -232,7 +215,11 @@ function CartBooking() {
           </Form>
         </div>
       </div>
-      <BookingStatus showModal={showModal} setShowModal={setShowModal} />
+      <BookingStatus
+        showModal={showModal}
+        setShowModal={setShowModal}
+        setShowBooking={setShowBooking}
+      />
     </>
   );
 }

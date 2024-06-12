@@ -6,8 +6,6 @@ import Fashion from "../Pages/Fashion";
 import LoginRegister from "../Pages/LoginRegister";
 import AddToCart from "../Pages/Add_To_Cart";
 import Category from "../Pages/Category/Category";
-import Booking from "../Pages/Booking";
-import CartBooking from "../Pages/CartBooking";
 import Order from "../Pages/Order";
 import ProtectedRoute from "./ProtectedRoute";
 import PAGE_NOT_FOUND from "../Pages/PAGE_NOT_FOUND";
@@ -54,18 +52,9 @@ function Router() {
           path="/profile"
           element={<ProtectedRoute Component={Profile} />}
         />
-        <Route
-          path="/cart/booking"
-          element={<ProtectedRoute Component={CartBooking} />}
-        />
 
         <Route path="/products/:category/:filter?" element={<Category />} />
         <Route path="/order" element={<Order />} />
-
-        <Route
-          path="/product/:mobile/:id/booking"
-          element={<ProtectedRoute Component={Booking} Booking />}
-        />
 
         <Route path="/*" element={<PAGE_NOT_FOUND />} />
         <Route path="/about" element={<About />} />

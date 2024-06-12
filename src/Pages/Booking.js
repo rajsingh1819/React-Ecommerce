@@ -4,16 +4,13 @@ import { Button, Form, FormGroup, ListGroup } from "react-bootstrap";
 import { FaPlus, FaMinus, FaStar } from "react-icons/fa";
 import toast from "react-hot-toast";
 import { paymentData } from "../assets/Constants/Constant";
-import { useLocation, useNavigate } from "react-router-dom";
 import BookingStatus from "./BookingStatus";
 import { v4 as uuidv4 } from "uuid";
 
-function Booking() {
+function Booking(props) {
   const [showModal, setShowModal] = useState(false);
-
-  const navigate = useNavigate();
-  const location = useLocation();
-  const { data, avgRating, taxCharge, deliveryCharges } = location.state || {};
+  const { data, avgRating, taxCharge, deliveryCharges, setShowBooking } =
+    props || {};
 
   const { price, reviews } = data;
   const [fullName, setFullName] = useState("");
@@ -36,15 +33,6 @@ function Booking() {
     }
   };
 
-  const currentDate = new Date();
-  const options = {
-    timeZone: "Asia/Kolkata", // Set the time zone to Indian Standard Time (IST)
-    hour12: true, // Use 12-hour clock format
-  };
-
-  const formattedDate = currentDate.toLocaleDateString("en-IN", options);
-  const formattedTime = currentDate.toLocaleTimeString("en-IN", options);
-
   const notify = () => {
     toast("Please select a payment method!", {
       icon: <span className="hot-toast-icon">ⓘ</span>,
@@ -54,7 +42,7 @@ function Booking() {
   };
 
   const goBack = () => {
-    navigate(-1); // Go back one step
+    setShowBooking(false);
   };
 
   const submitForm = (e) => {
@@ -82,8 +70,8 @@ function Booking() {
       taxCharge,
       deliveryCharges,
       selectedPaymentMethod,
-      date: formattedDate,
-      time: formattedTime,
+      date: new Date().toLocaleDateString("en-IN"),
+      time: new Date().toLocaleTimeString("en-IN"),
       orders: [order],
     };
 
@@ -283,7 +271,11 @@ function Booking() {
           </Form>
         </div>
       </div>
-      <BookingStatus showModal={showModal} setShowModal={setShowModal} />
+      <BookingStatus
+        showModal={showModal}
+        setShowModal={setShowModal}
+        setShowBooking={setShowBooking}
+      />
     </>
   );
 }

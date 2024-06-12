@@ -111,7 +111,7 @@ function Profile() {
 
               <h5 className="info-title">Details</h5>
               <div className="user-details">
-                <h5 onClick={() => navigate("/order")}>
+                <h5 className="profileOrder" onClick={() => navigate("/order")}>
                   Order:{" "}
                   <span>
                     {

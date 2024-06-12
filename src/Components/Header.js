@@ -11,26 +11,10 @@ import DropDownProfile from "./DropDownProfile";
 import { RxCross2 } from "react-icons/rx";
 
 const nav_Links = [
-  {
-    path: "/home",
-    display: "Home",
-  },
-  {
-    path: "/order",
-    display: "Order",
-  },
-  // {
-  //     path: '/admin',
-  //     display: 'Admin'
-  // },
-  {
-    path: "/profile",
-    display: "Profile",
-  },
-  {
-    path: "/about",
-    display: "About",
-  },
+  { path: "/home", display: "Home" },
+  { path: "/order", display: "Order" },
+  { path: "/profile", display: "Profile" },
+  { path: "/about", display: "About" },
 ];
 
 function Header() {
@@ -100,7 +84,6 @@ function Header() {
         <Row className="Row_bottom_style">
           <div className="header_wrap">
             {location.pathname !== "/home" &&
-              !location.pathname.includes("/booking") &&
               location.pathname !== "/login" && (
                 <div className="back_arrow" onClick={goBack}>
                   <IoArrowBack />

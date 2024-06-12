@@ -299,6 +299,16 @@
     height: 400px;
     overflow-y: auto;
   }
+  
+.processing-icon {
+  margin-left: 0.4rem;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 5px solid #ccc;
+  border-top-color: green;
+  animation: rotate 2s linear infinite;
+}
 }
 
 .Full_user_action {

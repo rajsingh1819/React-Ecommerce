@@ -1,19 +1,17 @@
-// AddToCart.js
 import React, { useState, useEffect } from "react";
 import "./style/add_To_Cart.css";
 import { Col, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-
 import EmptyCart from "../Container/EmptyCart";
-
 import { MdOutlineDelete } from "react-icons/md";
 import { useCartContext } from "../Context/Cart_Context";
 import { TbShoppingCartCancel } from "react-icons/tb";
 import { Offers } from "../assets/Constants/Constant";
-
 import toast from "react-hot-toast";
+import CartBooking from "./CartBooking";
 
 function AddToCart() {
+  const [showBooking, setShowBooking] = useState(false);
   const [subTotal, setSubTotal] = useState(0);
   const [total, setTotal] = useState(0);
   const { cart, removeToCart, updateQuantity, RemoveAllCartItem } =
@@ -23,19 +21,25 @@ function AddToCart() {
   const navigate = useNavigate();
 
   const userNotAvailable = () => {
-    toast("User is not logged in!", {
-      icon: <span className="hot-toast-icon">ⓘ</span>,
+    toast.error("User is not logged in!", {
       duration: 2000,
       className: "hot-toast",
     });
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [showBooking]);
+
   const handleCartBooking = () => {
     const login = localStorage.getItem("login");
-    navigate("/cart/booking", {
-      state: { deliveryCharges, cart, total, taxCharge },
-    });
-    !login && userNotAvailable();
+
+    if (!login) {
+      userNotAvailable();
+      navigate("/login");
+    } else {
+      setShowBooking(true);
+    }
   };
 
   useEffect(() => {
@@ -54,7 +58,7 @@ function AddToCart() {
 
   return !cart?.length > 0 ? (
     <EmptyCart />
-  ) : (
+  ) : !showBooking ? (
     <Container className="booking_style_top">
       <Row>
         <Col lg="8">
@@ -168,6 +172,14 @@ function AddToCart() {
         </Col>
       </Row>
     </Container>
+  ) : (
+    <CartBooking
+      deliveryCharges={deliveryCharges}
+      cart={cart}
+      total={total}
+      taxCharge={taxCharge}
+      setShowBooking={setShowBooking}
+    />
   );
 }
 

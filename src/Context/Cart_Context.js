@@ -59,11 +59,11 @@ const CartProvider = ({ children }) => {
 
   const RemoveAllCartItem = () => {
     dispatch({ type: "Remove_All_Cart_Item" });
-    toast("Cart is Empty!", {
-      icon: <span className="hot-toast-icon">ⓘ</span>,
-      duration: 2000,
-      className: "hot-toast",
-    });
+    // toast("Cart is Empty!", {
+    //   icon: <span className="hot-toast-icon">ⓘ</span>,
+    //   duration: 2000,
+    //   className: "hot-toast",
+    // });
   };
 
   const addContact = (message) => {

@@ -1,10 +1,20 @@
 import React from "react";
 import { Button, Modal } from "react-bootstrap";
 import { MdCheckCircle } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useCartContext } from "../Context/Cart_Context";
 
-function BookingStatus({ showModal, setShowModal }) {
+function BookingStatus({ showModal, setShowModal, setShowBooking }) {
+  const { RemoveAllCartItem } = useCartContext();
+  const location = useLocation();
   const navigation = useNavigate();
+
+  const actionStatus = () => {
+    setShowModal(false);
+    setShowBooking(false);
+    navigation("/order");
+    location.pathname === "/cart" && RemoveAllCartItem();
+  };
   return (
     <Modal
       show={showModal}
@@ -33,8 +43,7 @@ function BookingStatus({ showModal, setShowModal }) {
           style={{ backgroundColor: "#35558a" }}
           className="mb-1"
           onClick={() => {
-            setShowModal(false);
-            navigation("/order");
+            actionStatus();
           }}
         >
           Track your order
